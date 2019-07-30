@@ -1,0 +1,50 @@
+#This file used to give a general naming method to all Object.
+
+Html:
+table:
+	#for search:
+	Basic ecu message table => basicEcuMessageTable
+		data id => dataId
+		ecuid =>  ecuid
+		page number => pageNumber
+		user name => username
+		search button => searchButton
+		checkbox => checkGroup
+	# for dup => +'2'
+	pk table => pgpTable
+		data id => dataId
+		username => username
+		page number => pageNumber
+		searchButton 
+	#for data upload
+	id => {path}
+		other => ecuid , pageNumber, username
+
+pagename:
+	xxx-xx.html
+	init js xxxXxInit.js
+	restpath /xxx/xx/{}
+Rest
+	#for accept
+	id => {path}
+	ecuid => ecuid
+	pageNumber => page
+	username => (operator, user)
+	
+	#for output => pojo
+	id => id
+	ecuid => ecuId
+	username => operator , user
+	
+Userlog operation can be extended
+
+	
+	
+	
+
+	
+	
+
+	
+		
+	

@@ -1,0 +1,96 @@
+user role permission
+role -> 
+
+	You can create a customized role by SQL.
+	guest 
+		only index page
+	010 newbee -> current sign up but unverified, apply for new role
+		for introduction page only
+		in fact, equals guest
+	
+	100 engineer -> 
+		all the functions in dummy group
+		
+	110 manager ->
+		manage logs, pgp 
+
+	200 root ->
+		all with confirm rights and create dummy ecu
+	
+	BasicUser
+		mawenqiang mawenqiang@Shurima
+
+	MrKiri ->
+		all with handsome and secret power
+		Use this account to reset!
+		account: MrKiri Password:NSTP-2019.06.30@TongJi
+		
+
+permission use url!
+	You may create or combine the permissions with role.
+	with naming number XX*1000 + YY*10 for example (refresh  execute => 1000 + 10)
+	XX:
+		0: visit home page and introductions, use tools #implicit 
+		1: use refresh
+		2: use offline
+		3: use diagnostic
+		4: use pgp
+		5: use ecu control
+		6: use user control
+		7: use group control
+		8: use role control
+	YY:
+		1000 -> readRefreshLog
+		1010 -> signRefreshFile
+		
+		2000 -> readOfflineLog
+		2010 -> readEcuKey
+		2020 -> readEcuKeyChange
+		2030 -> changeEcuKey
+		2040 -> verifyEcuKey
+		
+		3000 -> readDiagLog 
+		3010 -> doDiagExec 
+
+		4000 -> readPgpPublicKey
+		4010 -> uploadPgpPublicKey
+		4020 -> revokePgpPublicKey
+		4030 -> trustPgpPublicKey
+		4040 -> untrustPgpPublicKey
+		4050 -> deletePgpPublicKey
+		
+		5000 -> readEcuInfo
+		5010 -> createDummyEcu
+		5020 -> deleteEcu
+		5030 -> readEcuGroup
+		5040 -> addEcuIntoGroup
+		5050 -> removeEcuFromGroup
+
+		6000 -> #reserved
+		
+		7000 -> readResourceGroup
+		7010 -> createResourceGroup
+		7020 -> deleteResourceGroup
+		
+		8000 -> readRolePermission
+		8010 -> readPrivateRole
+		8011 -> readGroupRole
+		8020 -> grantPrivateRole
+		8021 -> grantGroupRole
+		8030 -> deletePrivateRole
+		8031 -> deleteGroupRole
+		
+
+	
+		
+		
+		
+	
+	
+		
+		
+		
+		
+	
+
+	
