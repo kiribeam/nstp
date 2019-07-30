@@ -1,0 +1,85 @@
+<div class="container-fluid main-block">
+	<div class="col-sm-12 text-center ">
+		<div class="page-header container-header text-primary">
+			<h3><strong><i class="fa fa-upload"></i> &nbsp;安全刷新——刷新文件处理</strong></h3>		
+		</div>
+		<div class="main-container">
+			<div class="">
+				<div id="tableBlock" class=" container-small form-group "></div>		
+			</div>		
+			<div class="">
+				<!-- <h4 class="item-title">选择ECU ID、指定bin文件</h4> -->
+				<h4 class="item-title"> </h4>
+				<ul class="item-list text-center">
+					<li>
+						<label for="filepath" class="col-sm-3 text-right">文件路径</label>
+						<div class="col-sm-3">
+							<form id="refreshForm">
+								<input type="file" class="form-control" id="file" name="file" placeholder="请选择文件">
+							</form>
+						</div>
+						<div class="col-sm-3">
+							<button id="refreshUploadBtn" class="btn btn-primary"><i class="fa fa-cloud-upload"></i>&nbsp;上传并进行UAES-REFRESH操作</button>
+						</div>
+						<div class="col-sm-3"> <p> </p></div>
+		  			</li>
+		  			<li>
+		  				<div class="col-sm-12"><br></div>
+		  			</li>
+					<li>
+						<label for="moduleId" class="col-sm-1 text-right">ModuleID:</label>
+						<div class="col-sm-1">
+							<input type="text" class="form-control" id="moduleId"  placeholder="2 bytes" value="0001">
+						</div>
+						<label for="bcid" class="col-sm-1 text-right">BCID:</label>
+						<div class="col-sm-1">
+							<input type="text" class="form-control" id="bcid"  placeholder="2 bytes" value="8000">
+						</div>
+						<label for="ecuName" class="col-sm-2 text-right">ECU Name:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" id="ecuName"  placeholder="8 bytes" value="46574D5F50475541">
+						</div>
+						<label for="appNbid" class="col-sm-1 text-right">AppNBID:</label>
+						<div class="col-sm-1">
+							<input type="text" class="form-control" id="appNbid"  placeholder="2 bytes" value="0001">
+						</div>
+						<div class="col-sm-1"></div>
+					</li>
+		  			<li>
+		  				<div class="col-sm-12"><br></div>
+		  			</li>
+					<li>
+					<label for="appSwLength" class="col-sm-1 text-left"> AppSWLen:</label>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" id="appSwLength"  placeholder="2 bytes"  value = "0001">
+					</div>
+					<label for="appSwLocation" class="col-sm-2 text-right"> App SW Location</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="appSwLocation"  placeholder="8*n bytes"  value = "0001800000090000">
+					</div>
+		  			</li>
+		  			<li>
+		  				<div class="col-sm-12"><br></div>
+		  			</li>
+		  			<li>
+					<div class="col-sm-7">
+						Subject Name<input type="text" class="form-control" id="subjectName"  placeholder="16 bytes" value="426F6479000000000000000000000000">
+					</div>
+					<div class="col-sm-2">
+						Certificate ID<input type="text" class="form-control" id="certificateId"  placeholder="8 bytes" value="0000000000000006">
+					</div>
+					<div class="col-sm-2">
+						KeyNBID<input type="text" class="form-control" id="keyNbid"  placeholder="2 bytes" value="0000">
+					</div>
+		  			</li>
+		  			<li>
+		  				<div class="col-sm-12"><br></div>
+		  				<div class="col-sm-12"><br></div>
+		  			</li>
+				</ul>	
+
+			</div>						
+		</div>		
+	</div>
+</div>
+<script src="testjs/refreshUploadInit.js"></script>

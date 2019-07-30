@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kiri.nstp.dao.OfflineLogDao">
+
+	<select id="getLog" parameterType="EcuSearchMessage" resultType="OfflineLog">
+		select distinct ol.id, ol.ecuid, ol.operation, ol.operator, ol.operateTime, ol.keyFlag 
+		from offline_log  ol
+		<if test="userGroupSet!=null and userGroupSet.size()>0">
+			join user_group_role as ugr
+			on ol.operator = ugr.username
+			join resource_group as g
+			on ugr.gid = g.gid and g.gname in 
+			<foreach item="item" index="index" collection="userGroupSet" open="(" separator="," close = ")">
+				#{item}
+			</foreach>
+		</if>
+		<where>
+			<if test="username!=''"> and operator = #{username}</if>
+			<if test="ecuid !=''"> and ecuid like concat('%', #{ecuid}, '%')</if>
+			<if test="keyId != 0 and keyId != null"> and keyId = #{keyId}</if>
+	</where>
+		order by operateTime desc
+	</select>
+	
+	<insert id="addLog" parameterType="OfflineLog">
+		insert into offline_log 
+		(ecuid, keyId, operation, operator,operateTime, keyFlag)
+		values
+		(#{ecuid}, #{keyId}, #{operation}, #{operator}, now(), #{keyFlag})
+	</insert>
+</mapper>

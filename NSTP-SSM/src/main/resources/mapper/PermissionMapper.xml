@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kiri.nstp.dao.PermissionDao">
+	<select id="getByRole" parameterType="String" resultType="Permission">
+		select distinct p.id as id, p.pid as pid, pname, p.type as type, p.status as status, url, p.remark as remark
+		from role as r
+		join role_permission as rp
+		on r.rname = #{name} and rp.rid = r.rid
+		join permission as p
+		on rp.pid = p.pid
+	</select>
+	<select id="getByUsernameRole" parameterType="String" resultType="Permission">
+		select distinct p.id as id, p.pid as pid, pname, p.type as type, p.status as status, url, p.remark as remark
+		from user_role as ur
+		join role_permission  as rp
+		on ur.username = #{name} and ur.rid = rp.rid
+		join permission as p
+		on  rp.pid = p.pid
+	</select>
+	<select id="getByUsernameGroupRole" parameterType="String" resultType="Permission">
+		select distinct p.id as id, p.pid as pid, pname, p.type as type, p.status as status, url, p.remark as remark
+		from user_group_role as ug
+		join role_permission  as rp
+		on ug.username = #{name} and ug.rid = rp.rid
+		join permission as p
+		on  rp.pid = p.pid
+	</select>
+	<select id="getByUsername" parameterType="String" resultType="Permission">
+		select distinct p.id as id, p.pid as pid, pname, p.type as type, p.status as status, url, p.remark as remark
+		from user_role as ur
+		join role_permission  as rp
+		on ur.username = #{name} and ur.rid = rp.rid
+		join permission as p
+		on  rp.pid = p.pid
+		UNION
+		select distinct p.id as id, p.pid as pid, pname, p.type as type, p.status as status, url, p.remark as remark
+		from user_group_role as ug
+		join role_permission  as rp
+		on ug.username = #{name} and ug.rid = rp.rid
+		join permission as p
+		on  rp.pid = p.pid
+	</select>
+	<select id="list" resultType="Permission">
+		select * from permission 
+	</select>
+	<select id="getById" parameterType="Integer" resultType="Permission">
+		select * from permission where id = #{id}
+	</select>
+</mapper>

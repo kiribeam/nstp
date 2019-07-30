@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kiri.nstp.dao.UserLogDao">
+
+	<select id="getLog" parameterType="UserSearchMessage" resultType="UserLog">
+		select distinct ul.id, ul.username, ul.operateTime, ul.operation, ul.before, ul.after
+		from user_log as ul
+		<if test="userGroupSet!=null and userGroupSet.size()>0">
+			join user_group_role as ug
+			on ul.username = ug.username
+			join resource_group as g
+			on ug.gid = g.gid and g.gname in 
+			<foreach item="item" index="index" collection="userGroupSet" open="(" separator="," close = ")">
+				#{item}
+			</foreach>
+		</if>
+		<where>
+			<if test="username!=''"> and ul.username = #{username}</if>
+		</where>
+		order by operateTime desc
+	</select>
+	
+	<insert id="addLog" parameterType="UserLog">
+		insert into user_log 
+		(username, operation, ,operateTime, `before`, `after`)
+		values
+		(#{username}, #{operation}, now(), #{before}, #{after})
+	</insert>
+</mapper>

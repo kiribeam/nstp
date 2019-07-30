@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/font_awesome.css">
+	<title>网络安全测试平台</title>
+</head>
+
+<body>
+	<div class="navbar navbar-default navbar-top clo-xs-2">
+		<div class="navbar-header ">
+			<a id="left-brand" href="#" class="navbar-brand "><nobr><strong>NSTP </strong></nobr>网络安全测试平台</a>
+		</div>
+		<div class=" col-xs">
+			<ul id="loginCtrl" class="nav navbar-nav navbar-right">
+			<!-- 此部分代码由Jquery生成 -->
+			</ul>
+		</div>
+	</div>
+	<!-- 插入背景 -->
+	<div class="backgroudphoto"></div>
+	<div class="transparent"></div>
+	<!-- 二级侧栏 -->
+	<div class="container-fluid main-block ">
+		<div class="col-sm-2 main-side-bar">
+		<ul id="accordion" class="accordion">
+			<li >
+				<div class="link" ><i class="fa fa-car"></i>系统简介/mark<i class="fa fa-chevron-down"></i></div>
+				<ul class="submenu ">
+					<li class="changeBeast"><p>illustration.html</p><a>系统说明</a></li>
+					<li class="changeBeast"><p>system-extend.html</p> <a>系统扩展</a></li>					
+				</ul>
+			</li>
+			<li >
+				<div class="link" ><i class="fa fa-undo"></i>安全刷新<i class="fa fa-chevron-down"></i></div>
+				<ul class="submenu ">
+					<li class="changeBeast"><p>refresh.html</p><a>功能说明</a></li>
+					<li class="changeBeast"><p>refresh-upload.html</p><a>刷新文件处理</a></li>
+					<li class="changeBeast"><p>refresh-log.html</p><a>操作记录查询</a></li>
+				</ul>
+			</li>
+			<li>
+				<div class="link" ><i class="fa fa-arrow-circle-down"></i>下线模拟<i class="fa fa-chevron-down"></i></div>
+				<ul class="submenu">
+					<li class="changeBeast"><p>offline.html</p><a>功能说明</a></li>
+					<li class="changeBeast"><p>offline-down.html</p><a>密钥申请</a></li>			
+					<li class="changeBeast"><p>offline-verify.html</p><a>密钥认证</a></li>		
+					<li class="changeBeast"><p>offline-log.html</p><a>操作记录查询</a></li>
+				</ul>
+			</li>
+			<li>
+				<div class="link" ><i class="fa fa-random"></i>安全诊断<i class="fa fa-chevron-down"></i></div>
+				<ul class="submenu">
+					<li class="changeBeast"><p>diag.html</p><a>功能说明</a></li>
+					<li class="changeBeast"><p>diag-exec.html</p><a>安全诊断申请</a></li>
+					<li class="changeBeast"><p>diag-log.html</p><a>操作记录查询</a></li>
+				</ul>
+			</li>
+			<li>
+				<div class="link"><i class="fa fa-unlock-alt"></i>PGP管理<i class="fa fa-chevron-down"></i></div>
+				<ul class="submenu">
+					<li class="changeBeast"><p>pgp-illustration.html</p><a>注意事项</a></li>
+					<li class="changeBeast"><p>keymgmt-user.html</p><a>用户管理</a></li>
+					<li class="changeBeast"><p>keymgmt-root.html</p><a>管理员操作</a></li>
+				</ul>
+			</li>
+			<li>
+				<div class="link"><i class="fa fa-gear"></i>ECU管理<i class="fa fa-chevron-down"></i></div>
+				<ul class="submenu">
+					<li class="changeBeast"><p>system-ecu.html</p><a>虚拟ECU增删</a></li>
+					<li class="changeBeast"><p>ecu-group.html</p><a>ECU组管理</a></li>
+					<li class="changeBeast"><p>resource-group.html</p><a>资源组查询</a></li>
+				</ul>
+			</li>
+			<li>
+				<div class="link"><i class="fa fa-gear"></i>系统管理<i class="fa fa-chevron-down"></i></div>
+				<ul class="submenu">
+					<li class="changeBeast"><p>user-role.html</p><a>用户私有角色</a></li>
+					<li class="changeBeast"><p>group-role.html</p><a>用户组角色</a></li>
+					<li class="changeBeast"><p>role-permission.html</p><a>角色权限查询</a></li>
+					<li class="changeBeast"><p>resource-group.html</p><a>资源组查询</a></li>
+				</ul>
+			</li>
+		</ul>
+		</div>
+		<!-- 主要部分 -->	
+		<div  id="beast" class="col-sm-10 text-center">
+		</div>
+	</div>
+
+	<div class="footer navbar-fixed-bottom text-center">
+		©2017 同济大学同周课题组   沪ICP备1000666号- 1
+	</div>
+	<script src="testjs/jquery-3.2.1.js"></script>
+	<script src="testjs/globalFunctionAndVar.js"></script>
+	<script src="testjs/loginFunctions.js"></script>
+	<script src="testjs/quickFunctions.js"></script>
+	<script src="testjs/NstpSystemInit.js"></script>
+</body>
+</html>

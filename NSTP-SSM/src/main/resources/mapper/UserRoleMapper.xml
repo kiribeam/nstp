@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kiri.nstp.dao.UserRoleDao">
+
+	<select id="list" parameterType="RoleSearchMessage" resultType="UserGroupRoleBlock">
+		select distinct ur.id, ur.rid, ur.username, r.rname
+		from user_role as ur 
+		join role as r on r.rid = ur.rid
+		<if test="userGroupSet!=null and userGroupSet.size()>0">
+		join user_group_role as ugr
+		on ur.username = ugr.username 
+		join resource_group rg 
+		on ugr.gid = rg.gid
+		and gname in
+			<foreach item="item" index="index" collection="userGroupSet" open="(" separator="," close = ")">
+				#{item}
+			</foreach>
+		</if>
+		<where>
+			<if test="id != null and id !=0"> and ur.id = #{id}</if>
+			<if test="username!=null and username!=''"> and ur.username = #{username}</if>
+			<if test="role!=null and role!=''"> and rname = #{role}</if>
+		</where>
+	</select>
+	
+	<insert id="add" parameterType="UserGroupRoleBlock">
+		insert into user_role 
+		(username, rid)
+		values
+		(#{username}, #{rid})
+	</insert>
+	
+	<delete id="del" parameterType="Integer">
+		delete from user_role
+		where id = #{id} 
+	</delete>
+</mapper>

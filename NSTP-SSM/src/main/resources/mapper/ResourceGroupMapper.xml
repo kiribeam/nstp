@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kiri.nstp.dao.ResourceGroupDao">
+
+	<select id="getPermittedGroup" resultType="ResourceGroup">
+		select distinct g.id, g.gid, g.gname, g.remark, g.status
+		from user_group_role as ug
+		join role_permission as rp
+		on ug.username = #{username} and rp.rid = ug.rid
+		join permission as p
+		on p.pname = #{permission} and p.pid = rp.pid
+		join resource_group as g
+		on ug.gid = g.gid
+	</select>
+	<select id="list" parameterType="String" resultType="ResourceGroup">
+		select * from resource_group
+		<if test="_parameter != null and _parameter != ''">
+			where gname = #{group}
+		</if>
+	</select>
+	<select id="getById" parameterType="Integer" resultType="ResourceGroup">
+		select * from resource_group
+		where id = #{id}
+	</select>
+	<insert id="add" parameterType="ResourceGroup">
+		insert into resource_group (gid, gname, remark, status)
+		values
+		(#{gid}, #{gname}, #{remark}, #{status})
+	</insert>
+	<delete id="del" parameterType="Integer">
+		delete from resource_group where id = #{id}
+	</delete>
+</mapper>

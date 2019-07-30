@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kiri.nstp.dao.EcuKeyChangeDao">
+	<select id="getList" parameterType="EcuSearchMessage" resultType="EcuKeyChange">
+		select distinct ekc.id, ekc.ecuid, ekc.keyId, ekc.operator, ekc.opValue, ekc.m4, ekc.count, ekc.keyFlag
+		from ecu_key_change as ekc
+		<if test="userGroupSet != null and userGroupSet.size()>0">
+			join ecu_group as eg 
+			on ekc.ecuid = eg.ecuid
+			join resource_group as g
+			on eg.gid = g.gid and g.gname in 
+			<foreach item="item" index="index" collection="userGroupSet" open="(" separator="," close = ")">
+				#{item}
+			</foreach>
+		</if>
+		<where>
+			<if test="id!=null and id!=0"> and ekc.id = #{id}</if>
+			<if test="username !=null and username!=''">and operator = #{username} </if>
+			<if test="ecuid != null and ecuid != ''">and ekc.ecuid like concat('%', #{ecuid}, '%')</if>
+			<if test="keyId!=null and keyId != 0"> and ekc.keyId = #{keyId}</if>
+		</where>
+	</select>
+
+	<select id="getById" parameterType="Integer" resultType="EcuKeyChange">
+		select * from ecu_key_change where id = #{id}
+	</select>
+	
+	<delete id="del" parameterType="EcuKeyChange">
+		delete from ecu_key_change 
+		where
+		ecuid = #{ecuid}
+		and keyId = #{keyId}
+		and count &lt;=  #{count}
+	</delete>
+	<delete id="delFollowEcu" parameterType="String">
+		delete from ecu_key_change
+		where
+		ecuid = #{ecuid}
+	</delete>
+	
+	<insert id="add" parameterType="EcuKeyChange">
+		insert into ecu_key_change
+		(ecuid, keyId, operator, opValue, m4, count, keyFlag)
+		values
+		(#{ecuid}, #{keyId}, #{operator}, #{opValue}, #{m4}, #{count}, #{keyFlag})
+	</insert>
+	
+</mapper>

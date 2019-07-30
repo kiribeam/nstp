@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kiri.nstp.dao.EcuInfoDao">
+	<select id="getEcuMessage" parameterType= "EcuSearchMessage" resultType="EcuInfo">
+		select distinct ei.id, ei.ecuid, ei.macAddress, ei.alterTime, ei.username, ei.status 
+		from  ecu_info as ei
+		<if test="userGroupSet != null and userGroupSet.size()>0">
+			join ecu_group as eg 
+			on ei.ecuid = eg.ecuid
+			join resource_group as g
+			on eg.gid = g.gid and g.gname in 
+			<foreach item="item" index="index" collection="userGroupSet" open="(" separator="," close = ")">
+				#{item}
+			</foreach>
+		</if>
+		<where>
+			<if test="id!=null and id!=0">
+				and ei.id = #{id}
+			</if>
+			<if test="ecuid!= null and ecuid!=''">
+				and ei.ecuid like concat('%', #{ecuid}, '%')
+			</if>
+			<if test="username!=null and username!=''">
+				and username = #{username}
+			</if>
+		</where>
+	</select>    
+	
+	<select id="getEcuByList" parameterType="List" resultType="EcuInfo">
+		select * from ecu_info
+		where id in
+			<foreach collection="list" item="id" index="index" open="(" separator="," close=")">
+				#{id}
+			</foreach>
+	</select>
+	
+	<select id="getEcuById" parameterType="Integer" resultType="EcuInfo">
+		select * from ecu_info where id = #{id};
+	</select>
+	<select id="getEcuByEcuid" parameterType="String" resultType="EcuInfo">
+		select * from ecu_info where ecuid= #{ecuid};
+	</select>
+	
+	<insert id="createEcu" parameterType="EcuInfo" >
+		insert into ecu_info
+		(id, ecuid, MACAddress, alterTime, username, status)
+		values
+		(null, #{ecuid}, #{macAddress}, now(), #{username}, #{status})
+	</insert>
+
+	<delete id="del" parameterType="Integer">
+		delete from ecu_info
+		where id = #{id}
+	</delete>
+	
+	<update id="updateEcu" parameterType="EcuInfo">
+		update ecu_info
+		<set>
+			<if test="macAddress != ''"> macAddress = #{macAddress},</if>
+			<if test="username != ''"> username=#{username},</if>
+			<if test="status != 0 and status != null"> status = #{status},</if>
+		</set>
+		where ecuid = #{ecuid} or id = #{id}
+	</update>
+ </mapper>

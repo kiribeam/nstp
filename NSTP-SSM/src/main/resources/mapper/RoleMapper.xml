@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kiri.nstp.dao.RoleDao">
+	<select id="getByUsername" parameterType="String" resultType="Role">
+		select  role.id as id, role.rid as rid, rname, status, remark
+		from role 
+		join user_role 
+		on user_role.username = #{username} and user_role.rid = role.rid
+	</select>
+	<select id="list" resultType="Role">
+		select * from role 
+	</select>
+	<select id="getById" parameterType="Integer" resultType="Role">
+		select * from role where id = #{id}
+	</select>
+</mapper>

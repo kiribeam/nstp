@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kiri.nstp.dao.EcuGroupDao">
+	<select id="list" parameterType="EcuSearchMessage" resultType="EcuGroupBlock">
+		select eg.id, eg.ecuid, eg.gid as gid, ei.username, rg.gname, rg.remark as gRemark
+		from ecu_info as ei
+		join ecu_group as eg
+		on ei.ecuid = eg.ecuid
+		join resource_group as rg
+		on eg.gid = rg.gid
+		<where>
+			<if test="id!=null and id!=0">
+				and eg.id = #{id}
+			</if>
+			<if test="ecuid!= null and ecuid!=''">
+				and ei.ecuid like concat('%', #{ecuid}, '%')
+			</if>
+			<if test="username!=null and username!=''">
+				and username = #{username}
+			</if>
+			<if test="userGroupSet != null and userGroupSet.size()>0">
+				and rg.gname in
+				<foreach item="item" index="index" collection="userGroupSet" open="(" separator="," close = ")">
+					#{item}
+				</foreach>
+			</if>
+		</where>
+	</select>
+	<insert id="add" parameterType="EcuGroupBlock">
+		insert into ecu_group (ecuid, gid)
+		values
+		(#{ecuid}, #{gid})
+	</insert>
+	<delete id="del" parameterType="Integer">
+		delete from ecu_group where id = #{id}
+	</delete>
+	<delete id="delByEcuid" parameterType="String">
+		delete from ecu_group where ecuid = #{ecuid}
+	</delete>
+	<delete id="delByGid" parameterType="Integer">
+		delete from ecu_group where gid=#{gid}
+	</delete>
+</mapper>
+	

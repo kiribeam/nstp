@@ -1,0 +1,25 @@
+<div class="container-fluid main-block ">
+	<div class="col-sm-12 text-center ">
+		<div class="page-header container-header text-primary">
+			<h3><strong><i class="fa fa-arrow-circle-down"></i> &nbsp;下线模拟</strong></h3>
+		</div>
+		<div class="main-container">
+			<div class="container-main-table">
+				<h4 class="item-title">功能说明</h4>
+				<div class="container-text text-left">
+					<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下线模拟功能主要目的是实现ECU和服务器中密钥对的同步更新。重点是实现密钥生成处理,密钥验证，文件加密传输等流程。</h4>
+					<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PC端起媒介作用，Server端将密钥数据中的M1，M2，M3密钥文件传输至ECU端，ECU端处理后将结果M4 M5 回传，Server端接收后进行确认及更新操作。此过程即完成了ECU端和Server端密钥的同步更新。</h4>
+					<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、使用密钥申请功能时，需要选择ECUID，并输入AuthID、KeyID、KFLAG等信息。在验证成功之前，Count值不会增加，</h4>
+					<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、使用密钥验证功能时，用户需要检查文件中的M4、M5信息，确认无误后选中相应ECUID、KeyID的记录并点击确认。后台会更新该条记录的Count值（+1），以及Status值为2.</h4>
+					<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status值为0——未操作或操作失败；Status值为1——执行过密钥申请，但未验证；Status值为2——已验证；</h4>
+					<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：<br> ——密钥不输入默认为系统随机生成；<br>——对于新的ECUID，AuthID需要设置为1，或者保证填写的AuthID中已存在Key，否则无法通过ECU的验证。<br>Count值显示的是上一次验证成功的Count值。新Key的Count值默认为0。
+					</h4>
+					<br><h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;流程如下：</h4>
+					<img src="./images/offline.png" class=" center-block img-rounded img-responsive">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div style=" height: 100px ;"></div>
+

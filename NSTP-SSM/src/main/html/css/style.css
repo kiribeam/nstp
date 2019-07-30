@@ -1,0 +1,651 @@
+/*********************index 页****************************/
+.navbar{
+
+    margin-bottom: 0px;
+    min-height: 40px;
+
+}
+.navbar-top{
+    height:80px;
+    background-color: rgba(62, 75, 123, 0.5);
+    border: 0;
+    margin: 0 0;
+    line-height: 1.5;
+}
+#left-brand {
+    color: #ffffff;
+    font-size: 30px;
+    position: relative;
+    top: 50%;
+    transform: translateY(20%);
+    font-family:"Tahoma";
+    z-index: 102;
+    opacity:1.0;
+    display : inline;
+  /*  font-weight: 900;*/
+}
+#left-brand h3{
+    color: #ffffff;
+    font-size: 20px;
+    display : inline;
+}
+.navbar-index{
+    font-size: 18px;
+    font-weight: 550;
+    position: relative;
+    top: 50%;
+    transform: translateY(108%);
+    padding-right: 10px;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+}
+/*nav右侧登录按钮*/
+#loginCtrl {
+    font-size: 16px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-3%);
+    margin-right: 20px;
+}
+
+.transparent{
+    width: 100%;
+    height: 100%;
+    /*background-color: #879afd;*/
+    background-color: rgba(1,1,1,0);
+    position:absolute;
+    opacity:0.7;
+    z-index: -1;
+}
+
+#right-brand {
+    color: #ffffff;
+    font-size: 18px;
+    position: relative;
+    top: 50%;
+    transform: translateY(30%);
+}
+.navbar-second{
+    height: 45px;
+    margin: 0 0;
+}
+
+.my-right{
+    float: right;
+}
+
+.sub-block-login{
+    /*background:url("../images/car8.png") no-repeat;*/
+    margin-top: 50px;
+    padding: 0 0;
+    /*position:fixed;*/
+    width:100%;
+    height:100%;
+    height: 400px;
+    min-width: 1000px;
+    background-size: cover;
+    z-index: 2;
+}
+.sub-block-login-form{
+    padding:0 0;
+    border: 2px solid #c1c1c1;
+    border-radius: 20px;
+}
+.sub-block-login-pic{
+    min-height: 400px;
+    min-width: 600px;
+    max-width: 640px;
+    /*position: absolute;*/    
+    display: block;
+    border:0px;
+/*    transform: translateY(20%);
+    transform: translateX(15%);*/
+    top: 50%;
+    left: 30%;
+    transform: translate(10%, 0%);
+    background-size: cover;
+    /*transform: translateX(10%);*/
+}
+.form-horizontal{
+    background-color: rgba(255, 255, 255, 0.8);
+    padding-bottom: 10px;
+    border-radius: 15px;
+    text-align: center;
+    min-height: 400px;
+}
+.container-login{
+    margin-left:0px;
+    margin-right:0px;
+    padding:0 0;
+    border: 2px;
+    width: 100%;
+    /*min-height: 700px;*/
+    height: 600px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 35px;
+    padding-bottom: 28px;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #333;
+    background-color: #aec2ec;
+    /*border-radius: 10px;*/
+    text-decoration:none;
+}
+
+/*************************************大背景图片*******************************************/
+.backgroudphoto{
+    background:url("../images/bg5.jpg") no-repeat;
+    position:fixed;
+    top: 0px;
+    left: 0;
+    width:100%;
+    height:100%;
+    min-width: 1000px;
+    z-index:-1;
+    background-size: cover;
+    /*background-position:0 20%;*/
+   /* background-position: center 0;*/
+}
+
+/*****************************************遮罩层*********************************/
+.subTransparent{
+/*    display: none;*/
+    padding:20px 30px;
+    margin: 10px 20px;
+    width: 80%;
+    height: 90%;
+    background-color: #0e0e0e;
+    position:absolute;
+    opacity:0.4;
+    z-index: 3;
+}
+/*****************************************三大主题*********************************/
+.main-block>.col-sm-4{
+    padding:60px 0px;
+}
+
+.sub-block{
+    padding:20px 30px;
+    min-height: 200px;
+    height: auto;
+/*    max-width: 500px;*/
+    width: 100%;
+    position:relative;
+    overflow: hidden;
+
+}
+
+.sub-block1{
+    padding:10px;
+    width:70%;
+    height:100%;
+    border: 4px solid #e7e7e7;
+    border-radius: 20px;
+}
+.sub-block2{
+    padding:10px;
+    width:70%;
+    height:100%;
+    border: 4px solid #e7e7e7;
+    border-radius: 20px;
+}
+
+.sub-block3{
+    padding:10px;
+    width:70%;
+    height:100%;
+    border: 4px solid #e7e7e7;
+    border-radius: 20px;
+}
+.sub-header{
+    font-family:"Tahoma";
+    color: #ffffff;
+    font-size: 35px;
+    z-index: 101;
+}
+
+/**字块垂直居中**/
+.center-vertical{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.center-vertical-down{
+    display:none;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/*******************/
+.footer{
+    background-color: #f8f8f8;
+    border: 2px solid #e7e7e7;
+    margin-top: 20px;
+}
+/********************************manager 权限设置 ****************************************/
+#userSelectform,#managerControl,#downloadBtn,#deleteBtn{
+    display: none;
+}
+/********************************side bar****************************************/
+ul {
+    list-style-type: none;
+}
+
+
+.main-side-bar{
+    border-right:  2px solid #e7e7e7;
+    height:700px;
+    padding:0px 0px 0px 0px;
+}
+ .accordion {
+    width: 100%;
+    max-width: 360px;
+    margin: 20px auto 20px;
+    background: #FFF;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding-left: 0px;
+ }
+
+.accordion .link {
+    cursor: pointer;
+    display: block;
+    padding: 15px 15px 15px 42px;
+    color: rgba(255,255,255,1);
+    font-size: 14px;
+    font-weight: 700;
+    border-bottom: 1px solid #CCC;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    background-color:rgba(62, 75, 123, 1);
+}
+
+.accordion li:last-child .link {
+    border-bottom: 0;
+}
+
+.accordion li i {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    font-size: 18px;
+    color: #fefefe;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.accordion li i.fa-chevron-down {
+    right: 12px;
+    left: auto;
+/*    font-size: 16px;*/
+}
+
+.accordion li.open .link {
+    /*color: #b63b4d;*/
+    font-weight:bold;
+/*    font-size: 16px;*/
+}
+
+.accordion li.open i {
+    /*color: #b63b4d;*/
+    font-weight:bold;
+}
+.accordion li.open i.fa-chevron-down {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+/**
+ * Submenu
+ -----------------------------*/
+ .submenu {
+    display: none;
+    background: #fefefe;
+    font-size: 14px;
+    padding-left: 0px;
+ }
+
+ .submenu li {
+    border-bottom: 3px solid #f8f8f8;
+ }
+
+ .submenu p{
+	display:none;
+ }
+ .submenu a {
+    display: block;
+	background: #ffffff;
+    text-decoration: none;
+    color: #333;
+    padding: 12px;
+    padding-left: 42px;
+    -webkit-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+ }
+
+ .submenu a:hover {
+    background: #4f7da5;
+    color: #fefefe;
+ }
+#iframe {
+    min-height: 800px;
+}
+
+.main-block-index{
+    margin-top:  70px;
+
+}
+.main-block{
+	/*margin-top:  10px;*/
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: rgba(1,1,1,0);
+}
+
+.side-bar .list-group-item{
+	border: 0;
+	border-radius: 3px;
+	margin-bottom: 10px;
+
+}
+
+/*杂碎*/
+.side-bar  .active{
+	background-color: #0275D8;
+}
+
+#inputfile {
+	display: inline;
+}
+
+
+.form-group-item{
+	padding-bottom: 10px;
+}
+
+.text-remind{
+	list-style-type:none;
+	padding: 0 0;
+	padding-bottom: 10px;
+}
+/*按键操作*/
+.btn-primary{
+    color:#ffffff;
+    background-color: #3e4b7b;
+    border-color: #676c7b;
+}
+.btn-primary:focus,.btn-primary:hover{
+    background-color: #8192d6;
+    border-color: #8192d6;
+}
+
+/*********************************************表格******************************************/
+#hexListTable ,#userKeyListTable{
+    font-size: 14px;
+}
+.myTable{
+    min-height: 150px;
+	max-height: 220px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.mytable-head{
+    background-color: #212533;
+    color: #ffffff;
+}
+.mytable-head th{
+    text-align: center;
+}
+.subTableRead{
+    /*height: auto;*/
+}
+.clear{
+    clear:both;
+}
+.container-header{
+    color:#ffe4e4;
+	margin-top: 20px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    /*border-bottom: 1px solid #111111;*/
+    font-size: 30px;
+}
+#loginContainer{
+	max-width: 500px;
+}
+.myTable.pre-scrollable {
+    background-color: #ffffff;
+    border: 1px outset   #ffeaea;
+ ;
+}
+/*右下角主框体*/
+.container-main-table {
+    background-color: rgba(1,1,1,0);
+    border-bottom: 1px outset   #f5f7cc;
+    margin-bottom: 10px;
+    /*padding-bottom: 5px;*/
+    padding: 0 0px 10px 0px;
+}
+.main-container{
+    padding-left: 50px;
+    padding-right: 50px;
+    width:100%;
+/*    background-color: rgba(62, 75, 123, 0.5);*/
+    color: #ffffff;
+}
+.container-main-table .item-title {
+    display: block;
+    /*background-color: rgba(1,1,1,0);*/
+    color: rgba(255,255,255,1);
+    padding: 10px 5px;
+    font-size: 20px;
+    margin: 0 10px 10px 10px;
+}
+/**/
+#uploadBtn , #downloadBtn ,#deleteBtn{
+
+}
+.container{
+	border: 0px;
+}
+
+/*用户管理页面内容*/
+
+h4.item-title {
+    margin-top: 0px;
+}
+
+li{
+    list-style-type:none;
+}
+
+ul li form{
+    min-height: 50px;
+}
+
+.item-list{
+    padding-left: 0px;
+}
+
+/**********************************login page        ************************************/
+
+
+.form-bg{
+    background: #00b4ef;
+}
+
+.form-horizontal .heading{
+    display: block;
+    font-size: 35px;
+    font-weight: 700;
+    padding: 35px 0;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 30px;
+}
+.form-horizontal .form-group{
+    padding: 0 40px;
+    margin: 0 0 25px 0;
+    position: relative;
+}
+.form-group{
+    color: #000000;
+}
+.form-horizontal .form-control{
+
+    background: #f0f0f0;
+    border: none;
+    border-radius: 20px;
+    box-shadow: none;
+    padding: 0 20px 0 45px;
+    height: 40px;
+    transition: all 0.3s ease 0s;
+}
+.form-horizontal .form-control:focus{
+    background: #e0e0e0;
+    box-shadow: none;
+    outline: 0 none;
+}
+.form-horizontal .form-group i{
+    position: absolute;
+    top: 12px;
+    left: 60px;
+    font-size: 17px;
+    color: #c8c8c8;
+    transition : all 0.5s ease 0s;
+}
+.form-horizontal .form-control:focus + i{
+    color: #00b4ef;
+}
+.form-horizontal .fa-question-circle{
+    display: inline-block;
+    position: absolute;
+    top: 12px;
+    right: 60px;
+    font-size: 20px;
+    color: #808080;
+    transition: all 0.5s ease 0s;
+}
+.form-horizontal .fa-question-circle:hover{
+    color: #000;
+}
+.form-horizontal .main-checkbox{
+    float: left;
+    width: 20px;
+    height: 20px;
+    background: #11a3fc;
+    border-radius: 50%;
+    position: relative;
+    margin: 5px 0 0 5px;
+    border: 1px solid #11a3fc;
+}
+.form-horizontal .main-checkbox label{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+.form-horizontal .main-checkbox label:after{
+    content: "";
+    width: 10px;
+    height: 5px;
+    position: absolute;
+    top: 5px;
+    left: 4px;
+    border: 3px solid #fff;
+    border-top: none;
+    border-right: none;
+    background: transparent;
+    opacity: 0;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.form-horizontal .main-checkbox input[type=checkbox]{
+    visibility: hidden;
+}
+.form-horizontal .main-checkbox input[type=checkbox]:checked + label:after{
+    opacity: 1;
+}
+.form-horizontal .text{
+    float: left;
+    margin-left: 7px;
+    line-height: 20px;
+    padding-top: 5px;
+    text-transform: capitalize;
+}
+.form-horizontal .btn{
+    /*float: right;*/
+    font-size: 14px;
+    color: #fff;
+    background: #00b4ef;
+    border-radius: 30px;
+    padding: 10px 25px;
+    border: none;
+    text-transform: capitalize;
+    transition: all 0.5s ease 0s;
+}
+@media only screen and (max-width: 479px){
+    .form-horizontal .form-group{
+        padding: 0 25px;
+    }
+    .form-horizontal .form-group i{
+        left: 45px;
+    }
+    .form-horizontal .btn{
+        padding: 10px 20px;
+    }
+}
+
+/*login page   over       **************************
+/*Sign up  page *********************************/
+.signupheading{
+	display: block;
+    font-size: 35px;
+    font-weight: 700;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 10px;
+}
+.signblock{
+	margin:0 auto;
+	display: block;
+    font-size: 35px;
+    font-weight: 700;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 10px;
+}
+.sub-block-signup-form{
+	margin:0 auto;
+	width: 400px;
+	padding:0 0;
+    border: 2px solid #c1c1c1;
+    border-radius: 20px;
+}
+.signup-group{
+	padding: 0 40px;
+    margin: 15 0 15 0;
+    position: relative;
+}
+.check-message{
+	margin: 5 0 5 0;
+}
+	

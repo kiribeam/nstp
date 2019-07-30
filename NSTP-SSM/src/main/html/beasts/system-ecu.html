@@ -1,0 +1,52 @@
+<!-- 二级侧栏 -->
+<div class="container-fluid main-block ">
+	<!-- 主要部分 -->	
+	<div class="col-sm-12 text-center ">
+		<div class="page-header container-header text-primary">
+			<h3><strong><i class="fa fa-cubes"></i> &nbsp;ECU管理</strong></h3>
+		</div>
+		<div class="main-container">
+			<div class="container-main-table">
+				<h4 class="item-title">ECU列表</h4>
+				<div id="tableBlock" class=" container-small form-group "></div>
+			</div>		
+			<div class="container-main-table">
+				<h4 class="item-title">虚拟ECU生成/全局ECU删除</h4>
+				<ul class="item-list text-center">
+		  			<li>
+		  				<div class="text-center"><p>Input to generate ONE Customized ECU!</p></div>
+		  			</li>
+					<li>
+						<form id="sysEcuidFrom" enctype="multipart/form-data" method="post" class="text-center"> 
+							<input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+							<label for="ecuid" class="col-sm-2 text-right">数量:(&lt;100)</label>
+						    <div class="col-sm-1">
+						    	<input type="text" class="form-control" id="sysECUAddNum" name="ECU_ID" placeholder="请输入所需ECU数量，范围1~100" value="1">
+							</div>
+							<label for="ecu_key_set" class="col-sm-1 text-right"> ECUID:</label>
+							<div class="col-sm-5">
+							    <input type="text" class="form-control" id="ecu_key_set"  placeholder="样例：00112233445566778899AABBCCDDEEFF" >
+							</div>
+						</form>
+					</li>
+		  			<li>
+		  				<div class="text-center"><p>If no gname inputed, it means private Ecu!</p></div>
+		  			</li>
+				</ul>	
+				<div class="col-sm-2"></div>
+				<div class="col-sm-2">
+			  		<button id="sysECUAddBtn" class="btn btn-primary"><i class="fa fa-cubes"></i>&nbsp;生成ECU</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</div>
+				<div class="col-sm-2">
+			  		<button id="ECUKeySetBtn" class="btn btn-primary"><i class="fa fa-level-down"></i>&nbsp;自定义ECUID</button>
+				</div>
+				<div class="col-sm-2"></div>
+				<div class="col-sm-2">
+			  		<button id="sysECUDelBtn" class="btn btn-primary"><i class="fa fa-remove"></i>&nbsp;删除ECU</button>
+				</div>
+				<div style="height: 50px"></div>
+			</div>			
+		</div>		
+	</div>
+</div>
+<script src="testjs/systemEcuInit.js"></script>

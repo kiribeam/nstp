@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kiri.nstp.dao.PgpDao">
+	
+	<select id="getPgpList" parameterType="PgpSearchMessage" resultType="UserPgp">
+		select distinct pgp.id, pgp.username, pgp.uploadTime, pgp.fingerPrint, pgp.status, pgp.confirmTime
+		from user_pgp as pgp
+		<if test="userGroupSet!=null and userGroupSet.size()>0">
+			join user_group_role as ug
+			on pgp.username = ug.username
+			join resource_group as g
+			on ug.gid = g.gid and g.gname in 
+			<foreach item="item" index="index" collection="userGroupSet" open="(" separator="," close = ")">
+				#{item}
+			</foreach>
+		</if>
+		<where>
+			<if test="id != null and id >0"> and pgp.id = #{id}</if>
+			<if test="username != null and username != ''"> and pgp.username = #{username}</if>
+			<if test="fingerPrint != null and fingerPrint != ''"> and fingerPrint like concat('%', #{fingerPrint}, '%')</if>
+			<if test="status != 0 and status != null"> and status = #{status}</if>
+		</where>
+	</select>
+	<select id="getPgpById" parameterType="Integer" resultType="UserPgp">
+		select * from user_pgp where id = #{id}
+	</select>
+	<update id = "updatePgp" parameterType="UserPgp">
+		update user_pgp 
+		<set>
+			<if test="status != 0 and status != null"> status=#{status},</if> 
+			<if test="status == 1"> confirmTime=now(),</if>
+			<if test="status == 0"> confirmTime=null,</if>
+			<if test="status == 2"> uploadTime=now(), 
+				fingerPrint = #{fingerPrint}, confirmTime=null,
+			</if>
+			<if test="status == 3"> confirmTime = null</if>
+		
+		</set>
+		where username=#{username} or id = #{id}
+	</update>
+	<delete id="delPgp" parameterType="Integer">
+		delete from user_pgp
+		where id = #{id}
+	</delete>
+	<insert id="createPgp" parameterType="UserPgp">
+		insert into user_pgp
+		(username, uploadTime, fingerPrint, status)
+		values
+		(#{username}, now(), #{fingerPrint}, #{status})
+	</insert>
+	
+</mapper>

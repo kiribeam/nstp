@@ -1,0 +1,66 @@
+<div class="container-fluid main-block ">
+	<div class="col-sm-12 text-center ">
+		<div class="page-header container-header text-primary">
+			<h3><strong><i class="fa fa-arrow-circle-down"></i> &nbsp;密钥文件申请</strong></h3>
+		</div>
+
+		<div class="main-container">
+			<div class="container-main-table">
+				<h4 class="item-title" style="color : #ffffff">申请密钥文件（M1-M5）</h4>
+				<div id="tableBlock" class=" container-small form-group "></div>	
+				<h4 class="item-title" style="margin-bottom: 0px;">选择ECUID，输入AuthID和KID (范围：01-15)，KeyFlag</h4>
+				<ul class="item-list text-center">
+					<li>
+						<form id="offlineEcuidFrom" enctype="multipart/form-data" method="post" class="text-center myForm"> 
+							<!-- 第一行 -->
+							<div class="col-sm-1"></div>
+							<label for="authid" class="col-sm-2 text-center">AuthID</label>
+						    <div class="col-sm-3">
+						    	<input type="text" class="form-control" id="offlineDown_authid" name="ECU_ID" placeholder="范围：1-20" value="1">
+							</div>																
+							<label for="kid" class="col-sm-1 text-center"> KeyID</label>
+						    <div class="col-sm-3">
+						    	<input type="text" class="form-control" id="offlineDown_kid" name="ECU_ID" placeholder="范围：01-20" value="1">
+							</div><br/>
+							<div class="col-sm-2"></div><br/>
+
+							<!-- 第二行 -->				
+
+							<label for="offline_key_set" class="col-sm-3 text-right"> 自定义16字节密钥</label>
+						    <div class="col-sm-7">
+						    	<input type="text" class="form-control" id="offline_key_set"  placeholder="留空则使系统自动生成密钥！输入样例：112233445566778899AABBCCDDEEFF" >
+						    </div><br/>
+						    <div class="col-sm-2"></div><br/>
+							<!-- 第三行 -->
+							<div class="col-sm-2">
+								WP<input type="text" class="form-control" id="WP_val"  placeholder="0或1" value="0">
+							</div>
+							<div class="col-sm-2">
+								BP<input type="text" class="form-control" id="BP_val"  placeholder="0或1" value="0">
+							</div>
+							<div class="col-sm-2">
+								DP<input type="text" class="form-control" id="DP_val"  placeholder="0或1" value="0">
+							</div>
+							<div class="col-sm-2">
+								KU<input type="text" class="form-control" id="KU_val"  placeholder="0或1" value="0">
+							</div>
+							<div class="col-sm-2">
+								DWC<input type="text" class="form-control" id="DWC_val"  placeholder="0或1" value="0">
+							</div>
+							<div class="col-sm-2">
+								CU<input type="text" class="form-control" id="CU_val"  placeholder="0或1" value="0">
+							</div>
+							<br/>
+						</form>
+					</li>
+				</ul>	
+				<div class="col-sm-12">
+	  				<button id="offlineDownBtn" class="btn btn-primary" style="margin-top: 10px;"><i class="fa fa-level-down"></i>&nbsp;请求更新密钥</button>
+	  				<p> </p>
+			  	</div>
+			</div>								
+		</div>		
+	<div style="height: 100px"></div>
+	</div>
+</div>
+<script src="testjs/offlineDownInit.js"></script>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kiri.nstp.dao.RefreshLogDao">
+
+	<select id="getLog" parameterType="EcuSearchMessage" resultType="RefreshLog">
+		select distinct rl.id, rl.ecuid, rl.type, rl.operateTime, rl.operator
+		from refresh_log as rl
+		<if test="userGroupSet!=null and userGroupSet.size()>0">
+			join user_group_role as ug
+			on rl.operator = ug.username
+			join resource_group as g
+			on ug.gid = g.gid and g.gname in 
+			<foreach item="item" index="index" collection="userGroupSet" open="(" separator="," close = ")">
+				#{item}
+			</foreach>
+		</if>
+		<where>
+			<if test="username!=''"> and operator = #{username}</if>
+			<if test="ecuid !=''"> and ecuid like concat('%', #{ecuid}, '%')</if>
+		</where>
+		order by operateTime desc
+	</select>
+	
+	<insert id="addLog" parameterType="RefreshLog">
+		insert into refresh_log
+		(ecuid, operateTime, type, operator)
+		values
+		(#{ecuid}, now(), #{type}, #{operator})
+	</insert>
+</mapper>

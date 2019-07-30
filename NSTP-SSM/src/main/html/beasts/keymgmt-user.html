@@ -1,0 +1,36 @@
+<div class="container-fluid main-block">
+	<div class="col-sm-12 text-center ">
+		<div class="page-header container-header text-primary">
+			<h3><strong><i class="fa fa-user"></i> &nbsp;用户管理</strong></h3>
+		</div>
+		<div class="main-container">
+			<div class="container-main-table">
+				<h4 class="item-title">用户公钥列表</h4>
+		  		<div id="tableBlock" class=" container-small form-group "></div>
+		  	</div>	
+		  	<button id="userKeyDelBtn" class=" btn btn-primary glyphicon "><i class="fa fa-eraser"></i>&nbsp;取消申请</button>
+			<div class="container-main-table col-sm-12">
+		  		<h4 class="item-title">上传最新密钥文件</h4>
+				<div class="form-group form-group-item">
+					<label for="filepath" class="col-sm-4 text-right" style="color:#ffffff;">密钥文件</label>
+					<div class="col-sm-4">
+						<input type="file" class="form-control" id="userUploadfile" name="userUploadfile" placeholder="请确认文件内容">
+					</div>
+					<div class="col-sm-2"><button id="userUploadBtn" class=" btn btn-primary"><i class="fa fa-cloud-upload"></i>&nbsp;确认上传</button></div>
+				</div>						
+		  		<div style="height:20px"></div>
+			</div>		
+			<div class="container-main-table" id="serverPKDownDiv">
+		  		<h4 class="item-title">下载服务器公钥</h4>
+				<ul class="item-list text-center">
+					<li >
+						<label >服务器公钥信息: </label><span class="itemshow" id="vServerPK">&nbsp;&nbsp;最新版本号——666</span>
+					</li>
+				</ul>			
+		  		<button id="serverPKDown" class=" btn btn-primary "><i class="fa fa-download"></i>&nbsp;最新服务器公钥</button>
+			</div>		
+		</div>		
+	</div>
+</div>
+<div style="height: 100px"></div>
+<script src="testjs/pgpUserInit.js"></script>

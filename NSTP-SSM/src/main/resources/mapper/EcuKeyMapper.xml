@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kiri.nstp.dao.EcuKeyDao">
+
+	<select id="getEcuKeys" parameterType="EcuSearchMessage" resultType="EcuKey">
+		select  distinct k.id as id, k.ecuid as ecuid, keyId, count, keyFlag, keyValue,
+			 k.status as status  
+		from ecu_keys as k
+		<if test="username!=null and username!=''">
+			join ecu_info as ei 
+			on ei.ecuid = k.ecuid and ei.username = #{username}
+		</if>
+		<if test="userGroupSet!=null and userGroupSet.size()>0">
+			join ecu_group as eg
+			on k.ecuid = eg.ecuid
+			join resource_group as g
+			on eg.gid = g.gid and g.gname in 
+			<foreach item="item" index="index" collection="userGroupSet" open="(" separator="," close = ")">
+				#{item}
+			</foreach>
+		</if>
+		<where> 
+			<if test="id!=null and id!=0"> and k.id = #{id}</if>
+			<if test="ecuid!='' and ecuid != null and ecuid.length()!=32">
+				and k.ecuid like concat('%', #{ecuid}, '%')
+			</if>
+			<if test="ecuid!=null and ecuid!='' and ecuid.length()==32">
+				and k.ecuid = #{ecuid}
+			</if>
+			<if test="status!=0 and status!= null">
+				and k.status = #{status}
+			</if>
+			<if test="keyId!= 0 and keyId!=null">
+				and keyId = #{keyId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="getEcuKeysByList" parameterType="List" resultType="EcuKey">
+		select * from ecu_keys
+		where id in
+			<foreach item="item" index="index" collection="list"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+	</select>
+	<select id="getEcuKeyById" parameterType="Integer" resultType="EcuKey">
+		select * from ecu_keys
+		where id = #{id}
+	</select>
+
+	<insert id="initDefaultEcuKey" parameterType="EcuKey">
+		insert into ecu_keys 
+		(id, ecuid, keyId, count, keyFlag, keyValue,  status)
+		values
+		(null, #{ecuid}, #{keyId}, #{count}, #{keyFlag}, #{keyValue},  #{status})	
+	</insert>
+	
+	<delete id="delEcuKey" parameterType="String">
+		delete from ecu_keys
+		where ecuid = #{ecuid}
+	</delete>
+	
+	<update id="updateEcuKey" parameterType="EcuKey">
+		update ecu_keys
+		<set> 
+			<if test="count!=null and count!=0">count = #{count},</if>
+			<if test="keyFlag!=null and keyFlag!=''">keyFlag = #{keyFlag},</if>
+			<if test="keyValue!=null and keyValue!=''">keyValue = #{keyValue},</if>
+			<if test="status!=0 and status != null"> status = #{status},</if>
+		</set>
+		where ecuid = #{ecuid} and keyId = #{keyId}
+	</update>
+	
+</mapper>

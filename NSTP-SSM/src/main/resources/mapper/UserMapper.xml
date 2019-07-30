@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kiri.nstp.dao.UserDao">
+	<select id="getById" parameterType="Integer" resultType="User">
+		select * from user_info where id = #{id}
+	</select>
+	<select id="getByName" parameterType="String" resultType="User">
+		select * from user_info where username = #{username}
+	</select>
+	<select id="list" parameterType="UserSearchMessage" resultType="User">
+		select u.id, u.username, u.password, u.salt, u.phone, u.createTime, u.status
+		from user_info as u
+		<if test="userGroupSet!=null and userGroupSet.size()>0">
+			join user_group_role as ug
+			on u.username = ug.username
+			join resource_group as g
+			on ug.gid = g.gid and g.gname in 
+			<foreach item="item" index="index" collection="userGroupSet" open="(" separator="," close = ")">
+				#{item}
+			</foreach>
+		</if>
+	</select>
+	
+	<update id="update" parameterType="User">
+		update user_info 
+		<set>
+			<if test="password != ''"> password = #{password},</if>
+			<if test="email != ''"> email = #{email},</if>
+			<if test="phone != ''"> phone = #{phone},</if>
+			<if test="status != -1"> status = #{status},</if>
+		</set>
+		where username = #{username} or id = #{id}
+	</update>
+	<delete id="del" parameterType="Integer">
+		delete from user_info where id = #{id};
+	</delete>
+	<insert id="add" parameterType="User">
+		insert into user_info (username, password, salt, email, phone, createTime, status)
+		values
+		(#{username}, #{password}, #{username}, #{email}, #{phone}, now(), #{status});
+	</insert>
+
+</mapper>
